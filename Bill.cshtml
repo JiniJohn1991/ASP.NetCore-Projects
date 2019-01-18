@@ -1,0 +1,115 @@
+﻿@model HomeManagementApplicationMain.Models.BillMaster
+    
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link href="~/Content/bootstrap.css" rel="stylesheet-->
+
+    <!-- <link href="~/lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" /> -->
+    <title>Add Bills</title>
+</head>
+<body>
+    
+   
+    
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap.min.js"></script>*@
+
+    <script src="~/lib/angular/angular.js"></script>
+    @*<script src="~/lib/bootstrap-ui-datetime-picker/bootstrap-ui-datetime-picker-tests.js"></script>*@
+    <script src="~/lib/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+
+    <div>
+        @using (@Html.BeginForm())
+        {
+            <table>
+
+                <tr>
+
+                    <td>
+                        <div>
+                            @Html.Label("Bill Type")
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-md-5">
+
+                            @Html.DropDownList("DropDown", Model.BillList, "---Select---")
+                            @* @Html.ValidationMessageFor(x => x.BillName, "", new { @class = "text-danger" })*@
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div>
+                            @Html.Label("Bill Amount")
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @Html.TextBox("Bill Amount")
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            @Html.Label("Store")
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @Html.TextBox("Store")
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Bill Date")
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="myDate" is-open="isOpen" />
+                            @*<span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openCalendar($event, prop)"><i class="fa fa-calendar"></i></button>
+                            </span>*@
+                        </div>
+                       
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Save Bill" />
+                    </td>
+                </tr>
+            </table>
+        }
+        <script type="text/javascript">
+            var app = angular.module('app', ['ui.bootstrap', 'ui.bootstrap.datetimepicker']);
+            app.controller('MyController', function () {
+                var that = this;
+
+                this.isOpen = false;
+
+                this.openCalendar = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    that.isOpen = true;
+                };
+            })
+        </script>
+    </div>
+</body>
+</html>

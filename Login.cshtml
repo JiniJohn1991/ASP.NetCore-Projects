@@ -1,0 +1,54 @@
+﻿@model HomeManagementApplicationMain.Models.UserLogin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <div>
+        @using (@Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    @*@Html.ValidationMessageFor(x => x.Error)*@
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.UserName)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.UserName)
+                        @Html.ValidationMessageFor(x => x.UserName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(y => y.Password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(y => y.Password)
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                </tr>
+            </table>
+        }
+
+    </div>
+</body>
+</html>
